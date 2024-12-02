@@ -104,18 +104,19 @@ if api_valid:
                         continue
 
                 # Display preview for each file
-                for file_content, file in zip(all_contexts, uploaded_files):
-                    st.sidebar.success(f"File `{file.name}` has been successfully processed!")
+                
+                st.sidebar.success(f"File {uploaded_file.name} has been successfully processed!")
 
                 # Combine all file contents into a single context string
                 contexts = "\n\n".join(all_contexts)
                 file_exist = True
-
+    
             except Exception as e:
                 st.sidebar.error(f"An error occurred while processing the files: {e}")
         else:
             st.sidebar.info("No files uploaded yet.")
-
+        st.sidebar.divider()
+        st.sidebar.warning("Disclaimer: Free Gemini API has limited usages. Please use wisely.")
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
